@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #050505;
+  background: #ffffff;
+}
+
+.jmn-navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 2px solid #8a0f60;
+}
+
+.jmn-navbar .navbar {
+  padding: 0;
+}
+
+.jmn-navbar__inner {
+  min-height: 140px;
+  width: min(1628px, calc(100% - 96px));
+  margin-inline: auto;
+  padding: 0;
+  gap: 64px;
+}
+
+.jmn-navbar__brand {
+  margin: 0;
+  padding: 0;
+}
+
+.jmn-navbar__logo {
+  display: block;
+  width: clamp(170px, 14vw, 245px);
+  height: auto;
+}
+
+.jmn-navbar__nav {
+  gap: clamp(34px, 4vw, 76px);
+}
+
+.jmn-navbar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  white-space: nowrap;
+  color: #050505;
+  font-size: clamp(18px, 1.35vw, 24px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  padding: 0;
+  transition: color 160ms ease;
+}
+
+.jmn-navbar__link:hover,
+.jmn-navbar__link:focus-visible {
+  color: #8a0f60;
+}
+
+.jmn-navbar__link:focus-visible {
+  outline: 3px solid rgba(138, 15, 96, 0.25);
+  outline-offset: 6px;
+}
+
+.jmn-navbar__link--dropdown::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-3px) rotate(45deg);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 1120px) {
+  .jmn-navbar__inner {
+    width: min(100% - 48px, 960px);
+    min-height: 116px;
+    gap: 32px;
+  }
+
+  .jmn-navbar__nav {
+    gap: 26px;
+  }
+
+  .jmn-navbar__link {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .jmn-navbar__inner {
+    min-height: 0;
+    padding: 22px 0 18px;
+    gap: 18px;
+  }
+
+  .jmn-navbar__logo {
+    width: 176px;
+  }
+
+  .jmn-navbar__collapse {
+    width: 100%;
+    padding-top: 18px;
+  }
+
+  .jmn-navbar__nav {
+    gap: 10px 24px;
+  }
+
+  .jmn-navbar__link {
+    min-height: 34px;
+    font-size: 16px;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .jmn-navbar__inner {
+    width: min(100% - 32px, 420px);
+  }
+
+  .jmn-navbar__nav {
+    gap: 6px 18px;
+  }
+
+  .jmn-navbar__link {
+    font-size: 15px;
+  }
+}
