@@ -1,0 +1,14 @@
+/* Presentation Main & Layout CSS */
+.app-root {
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+.main-content {
+  padding-top: 130px;
+  min-height: 200vh;
+}
+
+.hero-section {
+  padding-top: 20px;
+}

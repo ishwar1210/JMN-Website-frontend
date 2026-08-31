@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/* ================================================================
+   Hero Section — Sticky Scroll Animation
+   ================================================================ */
+
+/* Tall outer container — gives the browser enough scroll distance
+   for the travel + 6 card reveals. 500vh = 1 initial + ~67vh per step */
+.hero-scroll-outer {
+  position: relative;
+  height: 500vh;
+}
+
+/* Sticky inner: the actual visible viewport that locks while the
+   user scrolls through the tall outer container */
+.hero-sticky-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ── Hero section fills the sticky viewport ── */
+.hero-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url('@/assets/Homebackground.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding-top: 110px;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hero-content-row {
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+/* .home-page-root removed will-change to prevent breaking fixed positioning of Navbar */
+
+.hero-text-col {
+  will-change: transform;
+}
+
+/* ── Badge ── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  background: #e0e7ff;
+  color: #4338ca;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+/* ── Headline ── */
+.hero-title {
+  font-size: clamp(2.4rem, 3.8vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.4rem;
+}
+
+.hero-title-blue {
+  color: #3b82f6;
+  display: block;
+}
+
+/* ── Sub-text ── */
+.hero-description {
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  color: #475569;
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+  font-weight: 400;
+}
+
+/* ── CTA Buttons ── */
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff !important;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.45);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #1e293b !important;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+}
+
+.btn-hero-secondary:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  color: #2563eb !important;
+}
+
+/* ── Robot home slot (untransformed, anchors measurement) ── */
+.hero-graphic-slot {
+  position: relative;
+  width: 100%;
+  min-height: clamp(340px, 40vh, 460px);
+}
+
+/* Flying wrapper — gets transform applied via inline style */
+.hero-graphic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  z-index: 5;
+}
+
+.hero-3d-model {
+  width: 100%;
+  height: clamp(340px, 40vh, 460px);
+  max-width: 580px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  filter: drop-shadow(0 20px 40px rgba(79, 70, 229, 0.12));
+}
+
+/* ── Robot inner animation wrapper ── */
+.robot-anim-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Slow gentle tilt + float during travel */
+.robot-traveling {
+  animation: robotTravelSway 2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes robotTravelSway {
+  0% {
+    transform: rotate(-6deg) translateY(0px);
+  }
+  100% {
+    transform: rotate(6deg) translateY(-12px);
+  }
+}
+
+/* ── Impact section (new image-matching layout) ── */
+.hero-impact-section {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  will-change: transform;
+  width: 100%;
+}
+
+/* Invisible dock target — robot flies/docks here (top center above cards) */
+.hero-robot-dock-marker {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+/* "OUR IMPACT" eyebrow + title */
+.hero-impact-heading-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.hero-impact-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #3b82f6;
+  margin-bottom: 0.6rem;
+}
+
+.hero-impact-eyebrow-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3b82f6;
+}
+
+.hero-impact-title {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* 3-column grid for the 6 stat cards */
+.hero-cards-track {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ── Individual stat card (Ultra-Transparent Glassmorphic) ── */
+.hero-stat-single-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease,
+    box-shadow 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+  opacity: 0;
+  transform: translateY(28px) scale(0.94);
+}
+
+.hero-stat-single-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* One-shot glow when beam first hits a card */
+.hero-stat-single-card.just-lit {
+  animation: heroCardFlash 0.8s ease-out;
+}
+
+@keyframes heroCardFlash {
+  0% {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.55);
+    border-color: rgba(59, 130, 246, 0.6);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    border-color: rgba(226, 232, 240, 0.9);
+  }
+}
+
+.hero-stat-single-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 16px 35px rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+/* Icon badge — transparent glass background */
+.hero-stat-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: none;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-stat-single-card:hover .hero-stat-icon-badge {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.hero-stat-svg-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  /* Color black SVG to primary blue (#2563eb) */
+  filter: invert(32%) sepia(95%) saturate(1863%) hue-rotate(209deg) brightness(97%) contrast(95%);
+}
+
+.hero-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+  margin-bottom: 0.2rem;
+}
+
+.hero-stat-label {
+  font-size: 0.84rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ── Mobile: disable sticky scroll, stack everything ── */
+@media (max-width: 992px) {
+  .hero-scroll-outer {
+    height: auto;
+  }
+
+  .hero-sticky-inner {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    background-attachment: scroll;
+  }
+
+  .hero-wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 110px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-graphic-slot {
+    min-height: 360px;
+    margin-top: 1.5rem;
+  }
+
+  .hero-3d-model {
+    height: 360px;
+  }
+
+  .hero-robot-dock-marker {
+    display: none;
+  }
+
+  .hero-cards-track {
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-impact-title {
+    font-size: 1.5rem;
+  }
+
+  /* On mobile, show all cards immediately (no scroll animation) */
+  .hero-text-col,
+  .hero-impact-section {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .hero-stat-single-card {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+
+
+/* ================================================================
+   Robot Entry Animation & Speech Bubble
+   ================================================================ */
+
+.robot-entry-wrapper {
+  position: absolute;
+  inset: 0;
+  animation: robotFlyIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+}
+.robot-entry-wrapper > * {
+  pointer-events: auto;
+}
+
+@keyframes robotFlyIn {
+  0% {
+    transform: translate3d(30vw, -10vh, 0) scale(0.1) rotate(15deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+
+.robot-speech-bubble {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  background: rgba(59, 130, 246, 0.95);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  opacity: 0;
+  pointer-events: none;
+  animation: speechBubbleSequence 6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 1.2s;
+  white-space: nowrap;
+  z-index: 30;
+  text-transform: uppercase;
+}
+
+/* Tail pointing straight down */
+.robot-speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -10px;
+  border-width: 10px 10px 0 10px;
+  border-style: solid;
+  border-color: rgba(59, 130, 246, 0.95) transparent transparent transparent;
+  filter: drop-shadow(0 3px 2px rgba(59, 130, 246, 0.3));
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1rem;
+  background-color: #ffffff;
+  animation: blinkCursor 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes speechBubbleSequence {
+  0% { opacity: 0; transform: translate(-50%, 20px) scale(0.85); }
+  6% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  85% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -20px) scale(0.85); }
+}

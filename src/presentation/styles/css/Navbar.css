@@ -1,0 +1,128 @@
+/* Custom Bootstrap Navbar Extensions - Pixel Perfect Match */
+.navbar-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  padding: 1rem 0 !important;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+/* Initial state (Top of page): Completely Transparent overlaying Hero background */
+.navbar-white {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Scrolled state: Ultra-Transparent Glassmorphic Floating Header */
+.navbar-transparent {
+  background-color: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 0.6rem 0 !important;
+}
+
+.navbar-brand img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s ease;
+}
+
+.navbar-transparent .navbar-brand img {
+  height: 44px;
+}
+
+.nav-link {
+  font-size: 0.98rem !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  padding: 0.5rem 1rem !important;
+  transition: color 0.2s ease !important;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #3b82f6 !important;
+}
+
+.dropdown-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+  color: #64748b;
+}
+
+.nav-item.dropdown:hover .dropdown-icon {
+  transform: rotate(180deg);
+  color: #3b82f6;
+}
+
+/* Custom Dropdown Hover on Desktop */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(4px);
+  }
+
+  .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+    transform: translateY(10px);
+    min-width: 240px;
+    padding: 0.6rem 0;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid rgba(226, 232, 240, 0.9) !important;
+    border-radius: 12px !important;
+  }
+}
+
+.dropdown-item {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #334155;
+  padding: 0.65rem 1.2rem;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f5f9;
+  color: #2563eb;
+}
+
+.dropdown-category {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-left: 0.4rem;
+}
+
+/* Get In Touch Button */
+.btn-get-in-touch {
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  padding: 0.65rem 1.6rem !important;
+  background: #3b82f6 !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3) !important;
+  transition: all 0.25s ease !important;
+}
+
+.btn-get-in-touch:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4) !important;
+}
