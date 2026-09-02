@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import '@google/model-viewer'
-import { Navbar } from '@/presentation/components/Navbar'
+import { Navbar, Footer } from '@/presentation/components'
 import { useHomeData, useClientData } from '@/presentation/hooks'
 import type { ClientItem } from '@/domain/entities/Client'
 import { getImageUrl } from '@/shared/utils'
@@ -10,17 +10,22 @@ import computersSvgIcon  from '@/assets/imgi_9_computers.svg'
 import worldSvgIcon      from '@/assets/imgi_10_world.svg'
 import dealSvgIcon       from '@/assets/imgi_11_deal.svg'
 import teamSvgIcon       from '@/assets/imgi_12_team.svg'
-import homeModelImg      from '@/assets/HomeModel.png'
+import LaptopImg         from '@/assets/Laptop.png'
 import aidcImg           from '@/assets/AIDC-Solutions.png'
 import enterpriseImg     from '@/assets/Enterprise-software.png'
 import assetFleetImg     from '@/assets/Asset&Fleet-Management.png'
 import warehouseImg      from '@/assets/Warehouse&inventory.png'
 import iotImg            from '@/assets/Iot&Automation.png'
 import analyticsImg      from '@/assets/Analytics&Insights.png'
+import clientRetentionImg from '@/assets/whychoosejmn-client-s.png'
+import successfulProjectsImg from '@/assets/whychoosejmn-successful-p.png'
+import expertProfessionalsImg from '@/assets/whychoosejmn-export-pro.png'
+import globalPresenceImg from '@/assets/whychoosejmn-global.png'
+import dotShapeImg       from '@/assets/dot-shape.png'
 import {
-  ArrowRight,Building2,
+  ArrowRight, Building2,
   Factory, HeartPulse, Package, ShoppingBag, Landmark, GraduationCap, Car,
-  Check, Users, TrendingUp, Globe, Award,
+  Check,
 } from 'lucide-react'
 import '@/presentation/styles/css/Navbar.css'
 import '@/presentation/styles/css/HomePage.css'
@@ -85,10 +90,10 @@ const whyFeatures = [
 ]
 
 const whyStats = [
-  { icon: <Award      size={22} />, value: '99%',  label: 'Client Retention' },
-  { icon: <TrendingUp size={22} />, value: '200+', label: 'Successful Projects' },
-  { icon: <Users      size={22} />, value: '24+',  label: 'Expert Professionals' },
-  { icon: <Globe      size={22} />, value: '12+',  label: 'Global Presence' },
+  { icon: <img src={clientRetentionImg} alt="Client Retention" className="hp-why-stat-img" />, value: '99%',  label: 'Client Retention' },
+  { icon: <img src={successfulProjectsImg} alt="Successful Projects" className="hp-why-stat-img" />, value: '200+', label: 'Successful Projects' },
+  { icon: <img src={expertProfessionalsImg} alt="Expert Professionals" className="hp-why-stat-img" />, value: '24+',  label: 'Expert Professionals' },
+  { icon: <img src={globalPresenceImg} alt="Global Presence" className="hp-why-stat-img" />, value: '12+',  label: 'Global Presence' },
 ]
 
 // ──────────────────────────────────────────────────────────────
@@ -169,18 +174,22 @@ export const HomePage: React.FC = () => {
                 <div className="hp-robot-slot hp-reveal">
                   <div className="hp-robot-container">
                     <div className="hp-robot-anim hp-traveling">
-                      {React.createElement('model-viewer', {
-                        src: '/models/futuristic_flying_animated_robot_-_low_poly.glb',
-                        alt: 'JMN Futuristic Robot',
-                        'auto-rotate': '',
-                        'camera-controls': '',
-                        'disable-zoom': '',
-                        'disable-tap': '',
-                        autoplay: '',
-                        'shadow-intensity': '1',
-                        exposure: '1',
-                        class: 'hp-robot-model',
-                      })}
+                      {React.createElement(
+                        'model-viewer',
+                        {
+                          src: '/models/futuristic_flying_animated_robot_-_low_poly.glb',
+                          alt: 'JMN Futuristic Robot',
+                          'auto-rotate': '',
+                          'camera-controls': '',
+                          'disable-zoom': '',
+                          'disable-tap': '',
+                          autoplay: '',
+                          'shadow-intensity': '1',
+                          exposure: '1',
+                          class: 'hp-robot-model',
+                        },
+                        React.createElement('div', { slot: 'progress-bar', style: { display: 'none' } })
+                      )}
                     </div>
                   </div>
                 </div>
@@ -342,10 +351,10 @@ export const HomePage: React.FC = () => {
                 </ul>
               </div>
 
-              {/* Center: Dashboard image */}
+              {/* Center: Laptop image */}
               <div className="col-lg-4 d-flex justify-content-center">
                 <div className="hp-why-img-wrap">
-                  <img src={homeModelImg} alt="JMN Platform Dashboard" className="hp-why-img" />
+                  <img src={LaptopImg} alt="JMN Platform Dashboard" className="hp-why-img" />
                 </div>
               </div>
 
@@ -374,6 +383,9 @@ export const HomePage: React.FC = () => {
         <section className="hp-cta hp-reveal">
           <div className="container">
             <div className="hp-cta-inner">
+              {/* Dotted World Shape Background */}
+              <img src={dotShapeImg} alt="" className="hp-cta-dot-bg" aria-hidden="true" />
+
               <div className="hp-cta-text">
                 <h2 className="hp-cta-title">
                   Let's Build Something<br />Amazing Together
@@ -381,26 +393,32 @@ export const HomePage: React.FC = () => {
                 <p className="hp-cta-desc">
                   Have a project in mind? Let's discuss how we can turn your ideas into reality.
                 </p>
-                <a href="/get-in-touch" className="hp-btn-white">
+                <a href="/get-in-touch" className="hp-btn-primary hp-btn-gradient">
                   Start a Project <ArrowRight size={18} />
                 </a>
               </div>
               <div className="hp-cta-robot">
-                {React.createElement('model-viewer', {
-                  src: '/models/futuristic_flying_animated_robot_-_low_poly.glb',
-                  alt: 'JMN Robot',
-                  'auto-rotate': '',
-                  autoplay: '',
-                  'shadow-intensity': '0',
-                  exposure: '1.3',
-                  class: 'hp-cta-robot-model',
-                })}
+                {React.createElement(
+                  'model-viewer',
+                  {
+                    src: '/models/futuristic_flying_animated_robot_-_low_poly.glb',
+                    alt: 'JMN Robot',
+                    'auto-rotate': '',
+                    autoplay: '',
+                    'shadow-intensity': '0',
+                    exposure: '1.3',
+                    class: 'hp-cta-robot-model',
+                  },
+                  React.createElement('div', { slot: 'progress-bar', style: { display: 'none' } })
+                )}
               </div>
             </div>
           </div>
         </section>
 
       </main>
+
+      <Footer />
     </div>
   )
 }
